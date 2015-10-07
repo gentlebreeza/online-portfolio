@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Leave me a message</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/about_style.css' />
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <meta charset="utf-8" />
+    <title>Facebook Status Update using Node.JS and MySQL</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#add").click(function () {
+                $.post("http://localhost:3000/add?status=" + $("#status_box").val(), function () {
+                    $("#show").append($("#status_box").val());
+                    $("#show").append("<br>");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<% include templates/header.ejs %>
+<div id="content" style="display: block">
+    <div class="type_section" id="begin">
+        <div class="section">
+            <div class="cat f00">
+                <textarea rows="15" cols="80" placeholder="Leave me messages!" id="status_box"></textarea><br>
+                <input type="button" id="add" value="Submit">
+                <div id="show"></div>
+            </div>
+        </div>
+        <% include templates/footer.ejs %>
+    </div>
+</div>
+</body>
+</html>
